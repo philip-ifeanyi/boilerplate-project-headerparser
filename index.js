@@ -20,8 +20,8 @@ app.get('/', function (req, res) {
 });
 
 // your first API endpoint...
-app.get('/api/hello', function (req, res) {
-  res.json({ greeting: 'hello API' });
+app.get('/api/whoami', function (req, res) {
+  res.json({ whoareyou: 'Fuck you!' });
 });
 
 // listen for requests :)
