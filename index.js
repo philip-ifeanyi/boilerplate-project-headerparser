@@ -21,7 +21,14 @@ app.get('/', function (req, res) {
 
 // your first API endpoint...
 app.get('/api/whoami', function (req, res) {
-  res.json({ whoareyou: 'Fuck you!' });
+  let ipAddress
+  const headers = req.headers
+  if(!req.socket.remoteAddress) {
+    ipAddress = req.header('x-forwarded-for');
+  } else {
+    ipAddress = req.socket.remoteAddress;
+  }
+  res.json({ ipaddress: ipAddress, language: headers['accept-language'], software: headers['user-agent']});
 });
 
 // listen for requests :)
